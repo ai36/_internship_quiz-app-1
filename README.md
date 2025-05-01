@@ -11,7 +11,7 @@ Live demo - [https://internship-quiz-app-1-neon.vercel.app](https://internship-q
 ```shell
 npm install
 ```
-или
+or
 ```shell
 npm i
 ```
