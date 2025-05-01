@@ -2,7 +2,7 @@
 
 <br>
 
-Live demo - [https://internship-weather-app-2.vercel.app](https://internship-weather-app-2.vercel.app)
+Live demo - [https://internship-quiz-app-1-neon.vercel.app](https://internship-quiz-app-1-neon.vercel.app)
 
 <br>
 
