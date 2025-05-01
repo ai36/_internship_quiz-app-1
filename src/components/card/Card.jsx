@@ -1,6 +1,6 @@
-import { Welcome } from "src/pages1/welcome/Welcome";
-import { Quiz } from "src/pages1/quiz/Quiz";
-import { Results } from "src/pages1/results/Results";
+import { Welcome } from "src/pages/welcome/Welcome";
+import { Quiz } from "src/pages/quiz/Quiz";
+import { Results } from "src/pages/results/Results";
 import data from "/src/api/mock/quizz_questions.json";
 
 import { useState } from "react";

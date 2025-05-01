@@ -7,7 +7,7 @@
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["/src/hooks/*"],
-      "@pages/*": ["src/pages1/*"],
+      "@pages/*": ["src/pages/*"],
       "@utils/*": ["./src/utils/*"]
     }
   }
