@@ -1,0 +1,46 @@
+.enterNumber {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--size-m);
+
+    .button {
+        height: 60px;
+        aspect-ratio: 1;
+        border-radius: 100%;
+
+        &:hover {
+            color: var(--color-button-bg);
+        }
+
+        &:disabled {
+            color: var(--color-text-disabled);
+            cursor: not-allowed;
+        }
+
+        &:focus-visible {
+            color: var(--color-button-bg);
+            outline: 2px solid currentColor;
+        }
+    }
+
+    .input {
+        border-radius: var(--size-bradius);
+        border: var(--size-xs) solid currentColor;
+        padding: var(--size-sm);
+        font: var(--font-h2);
+        width: 118px;
+        text-align: center;
+
+        outline: none;
+
+        &:hover {
+            color: var(--color-button-bg);
+        }
+
+        &:active,
+        &:focus-visible {
+            color: var(--color-button-bg);
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.card {
+
+    .actionBox {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font: var(--font-m);
+
+        .legend {
+            margin-bottom: calc(var(--size-sm) + var(--size-s));
+        }
+    }
+}

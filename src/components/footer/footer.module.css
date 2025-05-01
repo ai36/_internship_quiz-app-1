@@ -1,0 +1,21 @@
+.footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .text {
+        color: var(--color-text-alt);
+        font: var(--font-sm);
+        translate: 0 -1px;
+
+        .link {
+            text-decoration: underline;
+            text-underline-offset: .2em;
+
+            &:focus-visible {
+                outline: 2px solid var(--color-button-bg);
+                outline-offset: 4px;
+            }
+        }
+    }
+}

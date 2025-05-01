@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+
+    .decore {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        translate: 0 57%;
+
+        height: 146px;
+        aspect-ratio: 135/146;
+    }
+
+    .close {
+        color: var(--color-text-alt);
+        height: 40px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+
+        &:focus-visible {
+            outline: 2px solid var(--color-button-bg--alt);
+            outline-offset: 2px;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.card {
+
+    .answerBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--size-m);
+
+        .enterNumber {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--size-m);
+
+            .button {
+                aspect-ratio: 1;
+                border-radius: 100%;
+            }
+
+            .input {
+                border-radius: var(--size-bradius);
+                border: var(--size-xs) solid currentColor;
+                padding: var(--size-sm);
+                font: var(--font-h2);
+                width: 118px;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+#root {
+    min-width: var(--min-screen-width);
+    padding-block: var(--size-m);
+
+    font: var(--font-l);
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+
+    color: var(--color-text);
+
+    background: linear-gradient(45deg, #125365 40.87%, #ff713f 40.87%, #ff713f 54.40%, #ff9d46 54.40%, #ff9d46 83.49%, #ffca4a 83.49%) center/cover no-repeat fixed;
+}
+
+.content {
+    margin: auto;
+    display: grid;
+    grid-template-rows: 48px 1fr 16px;
+    gap: var(--size-m);
+    width: var(--max-card-width);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    font: var(--font-h2);
+}

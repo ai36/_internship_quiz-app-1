@@ -1,0 +1,23 @@
+.card {
+    
+    .topImage {
+        margin-top: calc(-1 * var(--size-sm));
+    }
+
+    .titleBox {
+
+        .title {
+            margin-bottom: var(--size-m);
+        }
+    }
+
+    .success {
+        font-weight: 700;
+        color: var(--color-green);
+    }
+
+    .wrong {
+        font-weight: 700;
+        color: var(--color-red);
+    }
+}

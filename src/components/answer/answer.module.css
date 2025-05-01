@@ -1,0 +1,72 @@
+.answerBox {
+    margin-block: 0;
+    counter-reset: answersCounter;
+
+    .answerItem {
+        width: 100%;
+        border-radius: var(--size-bradius);
+        
+        position: relative;
+
+        &:hover {
+            color: var(--color-text-alt);
+            background-color: var(--color-button-bg);
+            border-color: var(--color-button-bg);
+
+            [class*="item"] {
+                border-color: transparent;
+            }
+        }
+
+        &:has([disabled]) {
+            pointer-events: none;
+        }
+
+        .success,
+        .wrong {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: none;
+        }
+    }
+
+    .correctAnswer {
+        color: var(--color-text-alt);
+        
+        [class*="item"] {
+            background-color: var(--color-green);
+            border-color: var(--color-green);
+        }
+
+        .success {
+            display: flex;
+        }
+    }
+
+    &:has(.correctAnswer) > :has(:checked) {
+        color: var(--color-text-alt);
+        
+        [class*="item"] {
+            background-color: var(--color-red);
+            border-color: var(--color-red);
+        }
+
+        .wrong {
+            display: flex;
+        }
+    }
+    
+    &.answerBox:has(.correctAnswer) > .correctAnswer:has(:checked) {
+        color: var(--color-text-alt);
+        
+        [class*="item"] {
+            background-color: var(--color-green);
+            border-color: var(--color-green);
+        }
+
+        .wrong {
+            display: none;
+        }
+    }
+}

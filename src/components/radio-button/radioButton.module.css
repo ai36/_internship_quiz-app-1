@@ -1,0 +1,39 @@
+.item {
+    width: 100%;
+    display: flex;
+
+    font: var(--font-m);
+    font-weight: 500;
+    border: var(--size-xs) solid var(--color-text);
+    border-radius: var(--size-bradius);
+    padding: var(--size-sm);
+
+    cursor: pointer;
+
+    counter-increment: answersCounter;
+
+    &:has(> .radio:checked) {
+        background-color: var(--color-button-bg);
+        color: var(--color-text-alt);
+        border-color: var(--color-button-bg);
+        cursor: default;
+    }
+
+    .radio {
+        scale: 0;
+        position: absolute;
+    }
+
+    span {
+        font-weight: 500;
+
+        &::before {
+            content: counter(answersCounter);
+            display: inline-block;
+            width: 18px;
+            margin-right: var(--size-sm);
+            font-weight: 700;
+            text-align: center;
+        }
+    }
+}

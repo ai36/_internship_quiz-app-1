@@ -1,0 +1,40 @@
+.buttonBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--size-s);
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--size-bradius);
+        padding: var(--size-ml);
+        font: var(--font-m);
+        color: var(--color-button-text);
+        background-color: var(--color-button-bg);
+        white-space: nowrap;
+        min-width: var(--min-button-width);
+
+        outline: none;
+
+        &:focus-visible {
+            outline: 2px solid var(--color-button-bg);
+            outline-offset: 4px;
+        }
+
+        &[disabled] {
+            background-color: var(--color-button-bg--alt);
+            cursor: not-allowed;
+
+            +.text {
+                color: var(--color-text-100);
+            }
+        }
+    }
+
+    .text {
+        font: var(--font-s);
+    }
+}
