@@ -4,7 +4,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--size-m);
+
+        .text {
+            text-align: center;
+
+            @media screen and (width < 768px) {
+                font: var(--font-mobile-subtitle-medium);
+            }
+        }
 
         .enterNumber {
             display: flex;

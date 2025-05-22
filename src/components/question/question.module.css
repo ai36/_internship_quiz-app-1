@@ -1,8 +1,20 @@
 .questionBox {
 
+    @media screen and (width < 768px) {
+        gap: 8px !important;
+        
+        .subtitle {
+            font: var(--font-mobile-subtitle-medium);
+        }       
+    }
+
     .pic {
         height: 60px;
         width: auto;
         border-radius: 10px;
+
+        @media screen and (width < 768px) {
+            height: 48px;
+        }
     }
 }

@@ -18,7 +18,7 @@ const validateInput = (value) => {
     return numericValue >= limits.min && numericValue <= limits.max;
 };
 
-export function Counter({ value, onChange, onFocus, onBlur, onQuiz, isInputValid }) {
+export function Counter({ value, onChange, onFocus, onBlur, onQuiz, isInputValid, isLoading }) {
     const [inputValue, setInputValue] = useState(String(value));
     const [isValid, setIsValid] = useState(true);
 
@@ -107,7 +107,7 @@ export function Counter({ value, onChange, onFocus, onBlur, onQuiz, isInputValid
         <div className={styles.enterNumber}>
             <button
                 className={styles.button}
-                disabled={currentNumericValue <= limits.min || isNaN(inputValue)}
+                disabled={isLoading || currentNumericValue <= limits.min || isNaN(inputValue)}
                 type="button"
                 aria-label="Сократить количество вопросов"
                 onMouseDown={handleMinus}
@@ -125,10 +125,11 @@ export function Counter({ value, onChange, onFocus, onBlur, onQuiz, isInputValid
                 onBlur={handleInputBlur}
                 onFocus={onFocus}
                 onKeyDown={handleKeyDown}
+                disabled={isLoading}
             />
             <button
                 className={styles.button}
-                disabled={currentNumericValue >= limits.max || isNaN(inputValue)}
+                disabled={isLoading || currentNumericValue >= limits.max || isNaN(inputValue)}
                 type="button"
                 aria-label="Добавить дополнительный вопрос"
                 onMouseDown={handlePlus}

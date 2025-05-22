@@ -3,19 +3,27 @@ import { Header } from "@components/header/Header.jsx";
 import { Card } from "@components/card/Card.jsx";
 import { Footer } from "@components/footer/Footer.jsx";
 
-export function App({ page }) {
+const pages = {
+    welcome: "Welcome",
+    quiz: "Quiz",
+    results: "Results",
+};
+
+const page = pages.welcome;
+
+export function App() {
     const [currentPage, setCurrentPage] = useState(page);
 
     const handleWelcome = () => {
-        setCurrentPage(`Welcome`);
+        setCurrentPage(pages.welcome);
     };
 
     const handleQuiz = () => {
-        setCurrentPage(`Quiz`);
+        setCurrentPage(pages.quiz);
     };
 
     const handleResults = () => {
-        setCurrentPage(`Results`);
+        setCurrentPage(pages.results);
     };
 
     return (

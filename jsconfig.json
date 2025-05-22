@@ -6,8 +6,8 @@
       "@icons/*": ["./images/icons/*"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
-      "@hooks/*": ["/src/hooks/*"],
-      "@pages/*": ["src/pages/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@pages/*": ["./src/pages/*"],
       "@utils/*": ["./src/utils/*"]
     }
   }

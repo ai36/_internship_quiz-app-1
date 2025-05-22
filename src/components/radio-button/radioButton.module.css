@@ -12,6 +12,12 @@
 
     counter-increment: answersCounter;
 
+    @media screen and (width < 768px) {
+        font: var(--font-mobile-question-medium);
+        border-width: var(--size-xxs);
+        padding: 10px;
+    }
+
     &:has(> .radio:checked) {
         background-color: var(--color-button-bg);
         color: var(--color-text-alt);
@@ -27,6 +33,11 @@
     span {
         font-weight: 500;
 
+        @media screen and (width < 768px) {
+            max-width: 245px;
+            display: flex;
+        }
+
         &::before {
             content: counter(answersCounter);
             display: inline-block;
@@ -34,6 +45,13 @@
             margin-right: var(--size-sm);
             font-weight: 700;
             text-align: center;
+
+            @media screen and (width < 768px) {
+                width: 10px;
+                margin-right: var(--size-s);
+                display: flex;
+                align-items: center;
+            }
         }
     }
 }

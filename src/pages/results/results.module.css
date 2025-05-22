@@ -1,13 +1,34 @@
 .card {
-    
+
+    @media screen and (width < 768px) {
+        .title {
+            margin-bottom: var(--size-s) !important;
+        }
+    }
+
     .topImage {
-        margin-top: calc(-1 * var(--size-sm));
+        width: 196px;
+        height: 196px;
+
+        .pic {
+            width: 100%;
+            height: auto;
+        }
+
+        @media screen and (width < 768px) {
+            width: 163px;
+            height: 162px;
+        }
     }
 
     .titleBox {
 
         .title {
             margin-bottom: var(--size-m);
+
+            @media screen and (width < 768px) {
+                margin-bottom: var(--size-sm);
+            }
         }
     }
 

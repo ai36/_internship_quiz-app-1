@@ -2,6 +2,10 @@
     margin-block: 0;
     counter-reset: answersCounter;
 
+    @media screen and (width < 768px) {
+        gap: 8px !important;
+    }
+
     .answerItem {
         width: 100%;
         border-radius: var(--size-bradius);
@@ -28,15 +32,23 @@
             top: 16px;
             right: 16px;
             display: none;
+
+            @media screen and (width < 768px) {
+                top: 9px;
+                right: 12px;
+                width: 16px;
+                height: 16px;
+            }
         }
     }
 
     .correctAnswer {
         color: var(--color-text-alt);
-        
+        background-color: var(--color-green);
+
         [class*="item"] {
-            background-color: var(--color-green);
-            border-color: var(--color-green);
+            background-color: var(--color-green) !important;
+            border-color: var(--color-green) !important;
         }
 
         .success {
@@ -44,29 +56,17 @@
         }
     }
 
-    &:has(.correctAnswer) > :has(:checked) {
+    &:has(.correctAnswer) > .wrongAnswer {
         color: var(--color-text-alt);
-        
-        [class*="item"] {
-            background-color: var(--color-red);
-            border-color: var(--color-red);
-        }
+        background-color: var(--color-red);
 
+        [class*="item"] {
+            background-color: var(--color-red) !important;
+            border-color: var(--color-red) !important;
+        }
+        
         .wrong {
             display: flex;
-        }
-    }
-    
-    &.answerBox:has(.correctAnswer) > .correctAnswer:has(:checked) {
-        color: var(--color-text-alt);
-        
-        [class*="item"] {
-            background-color: var(--color-green);
-            border-color: var(--color-green);
-        }
-
-        .wrong {
-            display: none;
         }
     }
 }

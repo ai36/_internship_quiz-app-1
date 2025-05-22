@@ -3,6 +3,7 @@
     --max-card-width: 590px;
     --min-button-width: 270px;
 
+    --size-xxs: 2px;
     --size-xs: 4px;
     --size-s: 8px;
     --size-sm: 12px;
@@ -29,4 +30,15 @@
     --font-m: normal 700 20px/24px var(--font-family);
     --font-sm: normal 400 14px/16px var(--font-family);
     --font-s: normal 400 10px/12px var(--font-family);
+
+    --font-mobile-title-bold: normal 700 24px/28px var(--font-family);
+    --font-mobile-subtitle-medium: normal 500 18px/22px var(--font-family);
+    --font-mobile-question-medium: normal 500 14px/18px var(--font-family);
+    --font-mobile-button-bold: normal 700 14px/18px var(--font-family);
+    --font-mobile-text-medium: normal 400 10px/12px var(--font-family);
+
+    @media screen and (width < 768px) {
+        --min-button-width: 194px;
+    }
 }
+
