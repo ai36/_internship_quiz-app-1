@@ -3,32 +3,10 @@ import resultImage from "@img/result.svg";
 import stylesCard from "@components/card/card.module.css";
 import styles from "./results.module.css";
 import { useEffect } from "react";
-import { getPluralized } from "@utils/pluralized";
+import { getResultMessage } from "@utils/resultMessage";
 
 export function Results({ results, onWelcome }) {
-    const { wrong, success } = results;
-    let resultText = <>Результат не определен</>;
-
-    if (success === 0 && wrong !== 0)
-        resultText = (
-            <>
-                <span className={styles.subtitle}>Ты не ответил ни на один вопрос. Попробуй еще!</span>
-            </>
-        );
-    if (wrong === 0 && success !== 0)
-        resultText = (
-            <>
-                <span className={styles.subtitle}>Ты&nbsp;ответил правильно на&nbsp;все&nbsp;вопросы. Так&nbsp;держать!</span>
-            </>
-        );
-    if (wrong !== 0 && success !== 0)
-        resultText = (
-            <>
-                Ты&nbsp;ответил правильно на&nbsp;<span className={styles.success}>{success}</span>&nbsp;{getPluralized(success, "question")} и&nbsp;сделал{" "}
-                <span className={styles.wrong}>{wrong}</span>
-                &nbsp;{getPluralized(wrong, "fall")}.
-            </>
-        );
+    const resultText = getResultMessage(results, styles);
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -46,11 +24,11 @@ export function Results({ results, onWelcome }) {
             <section>
                 <div className={`${stylesCard.card} ${styles.card}`}>
                     <div className={styles.topImage}>
-                        <img className={styles.pic} width="196" height="208" src={resultImage} alt="Ваш..." />
+                        <img className={styles.pic} width="196" height="196" src={resultImage} alt="Ваш..." />
                     </div>
                     <div className={`${stylesCard.titleBox} ${styles.titleBox}`}>
                         <h2 className={`${stylesCard.title} ${styles.title}`}>Результат</h2>
-                        <span className={`${stylesCard.subtitle} ${styles.subtitle || ''}`}>{resultText}</span>
+                        <p className={`${stylesCard.subtitle} ${styles.subtitle || ''}`} dangerouslySetInnerHTML={{ __html: resultText }}></p>
                     </div>
                     <div>
                         <Button text="Попробовать еще" onWelcome={onWelcome} disabled={false} />

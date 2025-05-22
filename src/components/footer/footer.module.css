@@ -8,6 +8,10 @@
         font: var(--font-sm);
         translate: 0 -1px;
 
+        @media screen and (width < 768px) {
+            font: var(--font-mobile-text-medium); 
+        }
+
         .link {
             text-decoration: underline;
             text-underline-offset: .2em;

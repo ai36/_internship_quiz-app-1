@@ -7,17 +7,32 @@
     padding: var(--size-l);
     border-radius: var(--size-bradius);
 
+    @media screen and (width < 768px) {
+        padding: var(--size-m);
+        gap: var(--size-m);
+    }
+
     .titleBox {
         text-align: center;
 
         .title {
             margin-bottom: var(--size-s);
+
+            @media screen and (width < 768px) {
+                font: var(--font-mobile-title-bold);
+                margin-bottom: 6px;
+            }
         }
 
         .subtitle {
             font: var(--font-l);
             text-align: center;
+
+            @media screen and (width < 768px) {
+                font: var(--font-mobile-subtitle-medium);
+            }
         }
+
     }
 
     .questionBox {
@@ -34,5 +49,9 @@
         flex-direction: column;
         align-items: flex-start;
         gap: var(--size-m);
+
+        @media screen and (width < 768px) {
+            gap: var(--size-sm);
+        }
     }
 }

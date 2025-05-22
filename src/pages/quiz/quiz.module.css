@@ -11,6 +11,11 @@
 
         .legend {
             margin-bottom: calc(var(--size-sm) + var(--size-s));
+
+            @media screen and (width < 768px) {
+                font: var(--font-mobile-button-bold);
+                margin-bottom: unset;
+            }
         }
     }
 }

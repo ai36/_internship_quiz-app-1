@@ -1,0 +1,34 @@
+.loadingBox {
+    width: 96px;
+    height: 24px;
+
+    @media screen and (width < 768px) {
+        width: 68.6px;
+        height: 17.1px;
+    }
+}
+
+.loadingCircle1 {
+    animation: loading 1s ease-in-out infinite;
+}
+
+.loadingCircle2 {
+    animation: loading 1s ease-in-out 0.2s infinite;
+}
+
+.loadingCircle3 {
+    animation: loading 1s ease-in-out 0.4s infinite;
+}
+
+@keyframes loading {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
+

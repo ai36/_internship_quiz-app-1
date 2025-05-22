@@ -4,7 +4,14 @@ import { Answer } from "@components/answer/Answer";
 import stylesCard from "@components/card/card.module.css";
 import styles from "./quiz.module.css";
 import { useQuiz } from "@hooks/useQuiz";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
+
+const keyToIndex = {
+  1: 0,
+  2: 1,
+  3: 2,
+  4: 3,
+};
 
 export function Quiz({ questionsCount, onResults }) {
   const [success, setSuccess] = useState(0);
@@ -14,6 +21,9 @@ export function Quiz({ questionsCount, onResults }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctlyAnsweredIds, setCorrectlyAnsweredIds] = useState([]);
   const [currentAnswerVariants, setCurrentAnswerVariants] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [correctAnswer, setCorrectAnswer] = useState(null);
+  const [showAnswerResult, setShowAnswerResult] = useState(false);
 
   const selectedOptionRef = useRef(null);
 
@@ -24,6 +34,7 @@ export function Quiz({ questionsCount, onResults }) {
       setIsAnswered(false);
       setSelectedOption(null);
       selectedOptionRef.current = null;
+      setCorrectAnswer(null);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setCurrentAnswerVariants(answers[currentQuestionIndex + 1].variants);
     } else {
@@ -36,34 +47,52 @@ export function Quiz({ questionsCount, onResults }) {
     selectedOptionRef.current = value;
   };
 
-  const handleCheckAnswer = () => {
-    const answerToCheck = selectedOptionRef.current;
-    if (answerToCheck === answers[currentQuestionIndex].correctAnswer) {
-      setSuccess((prev) => prev + 1);
-      setCorrectlyAnsweredIds((prev) => [...prev, questions[currentQuestionIndex].id]);
-    } else {
-      setWrong((prev) => prev + 1);
-    }
+  const handleCheckAnswer = useCallback(() => {
+    if (!selectedOptionRef.current) return;
+    setIsLoading(true);
     setIsAnswered(true);
-  };
+    setShowAnswerResult(false);
+    setTimeout(() => {
+      const answerToCheck = selectedOptionRef.current;
+      const currentCorrectAnswer = answers[currentQuestionIndex].correctAnswer;
+      setCorrectAnswer(currentCorrectAnswer);
+      if (answerToCheck === currentCorrectAnswer) {
+        setSuccess((prev) => prev + 1);
+        setCorrectlyAnsweredIds((prev) => [...prev, questions[currentQuestionIndex].id]);
+      } else {
+        setWrong((prev) => prev + 1);
+      }
+      setSelectedOption(answerToCheck);
+      setShowAnswerResult(true);
+      setIsLoading(false);
+    }, 1500);
+  }, [currentQuestionIndex, answers, questions]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Enter" && isAnswered && document.activeElement.id !== "logotype") {
         handleNextQuestion();
       }
-      if (event.key === "Enter" && selectedOption && document.activeElement.id !== "logotype") {
+      if (event.key === "Enter" && selectedOptionRef.current && document.activeElement.id !== "logotype") {
         handleCheckAnswer();
+      }
+      const currentKeyIndex = keyToIndex[event.key];
+      if (currentKeyIndex !== undefined && answers[currentQuestionIndex]?.variants?.[currentKeyIndex] && !isAnswered) {
+        handleOptionChange(answers[currentQuestionIndex].variants[currentKeyIndex]);
+      }
+      if (event.key === "Backspace" && !isAnswered) {
+        handleOptionChange(null);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleNextQuestion, handleCheckAnswer, selectedOption, isAnswered]);
+  }, [handleNextQuestion, handleCheckAnswer, isAnswered, currentQuestionIndex, answers, handleOptionChange, selectedOptionRef.current]);
 
   useEffect(() => {
     if (answers[currentQuestionIndex]) {
       if (!isAnswered) {
         setCurrentAnswerVariants(answers[currentQuestionIndex].variants);
+        setCorrectAnswer(null);
       }
     }
   }, [currentQuestionIndex, answers, isAnswered]);
@@ -86,15 +115,17 @@ export function Quiz({ questionsCount, onResults }) {
             isAnswered={isAnswered}
             selectedOption={selectedOption}
             key={`answer-${currentQuestionIndex}`}
+            correctAnswer={showAnswerResult ? correctAnswer : null}
           />
-          <div className={`${stylesCard.actionBox || ''} ${styles.actionBox}`}>
+          <div className={`${stylesCard.actionBox || ""} ${styles.actionBox}`}>
             <Button
               text={buttonText}
               onQuiz={isAnswered ? handleNextQuestion : handleCheckAnswer}
               currentQuestion={currentQuestionIndex}
-              disabled={!selectedOption}
+              disabled={isLoading || !selectedOption}
+              isLoading={isLoading}
             />
-            <span className={`${stylesCard.legend || ''} ${styles.legend}`}>
+            <span className={`${stylesCard.legend || ""} ${styles.legend}`}>
               {currentQuestionIndex + 1} / {questionsCount}
             </span>
           </div>

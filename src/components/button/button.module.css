@@ -19,6 +19,11 @@
 
         outline: none;
 
+        @media screen and (width < 768px) {
+            font: var(--font-mobile-button-bold);
+            padding: var(--size-m);
+        }
+
         &:focus-visible {
             outline: 2px solid var(--color-button-bg);
             outline-offset: 4px;
@@ -28,7 +33,7 @@
             background-color: var(--color-button-bg--alt);
             cursor: not-allowed;
 
-            +.text {
+            + .text {
                 color: var(--color-text-100);
             }
         }
@@ -36,5 +41,9 @@
 
     .text {
         font: var(--font-s);
+
+        @media screen and (width < 1280px) {
+            display: none;
+        }
     }
 }

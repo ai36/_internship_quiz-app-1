@@ -4,10 +4,31 @@
     align-items: center;
     gap: var(--size-m);
 
+    @media screen and (width < 768px) {
+        gap: var(--size-sm);
+    }
+
     .button {
         height: 60px;
         aspect-ratio: 1;
         border-radius: 100%;
+
+        @media screen and (width < 768px) {
+            height: 40px;
+
+            svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            circle {
+                stroke-width: 2px;
+            }
+
+            path {
+                stroke-width: 0;
+            }
+        }
 
         &:hover {
             color: var(--color-button-bg);
@@ -34,6 +55,13 @@
 
         outline: none;
 
+        @media screen and (width < 768px) {
+            border-width: var(--size-xxs);
+            font: var(--font-mobile-title-bold);
+            width: 88px;
+            height: 52px;
+        }
+
         &:hover {
             color: var(--color-button-bg);
         }
@@ -41,6 +69,11 @@
         &:active,
         &:focus-visible {
             color: var(--color-button-bg);
+        }
+
+        &:disabled {
+            color: var(--color-text-disabled);
+            cursor: not-allowed;
         }
     }
 }

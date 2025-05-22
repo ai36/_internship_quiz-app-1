@@ -8,16 +8,29 @@ import { useState, useEffect } from "react";
 export function Welcome({ onQuiz, value, onChange }) {
     const [isInputFocus, setIsInputFocus] = useState(false);
     const [isInputValid, setIsInputValid] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleCounterChange = (newValue, isValid) => {
         onChange(newValue);
         setIsInputValid(isValid);
     };
 
+    const startQuiz = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            onQuiz();
+        }, 1500);
+    }
+
+    const handleQuizStart = () => {
+        if (!isInputValid) return;
+        startQuiz();
+    };
+
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === "Enter" && onQuiz && !isInputFocus && isInputValid && document.activeElement.id !== "logotype") {
-                onQuiz();
+                startQuiz();
             }
         };
         window.addEventListener("keydown", handleKeyDown);
@@ -31,7 +44,7 @@ export function Welcome({ onQuiz, value, onChange }) {
                 <div className={`${stylesCard.card} ${styles.card}`}>
                     <div className={stylesCard.titleBox}>
                         <h2 className={stylesCard.title}>Добро пожаловать</h2>
-                        <span className={stylesCard.subtitle}>на&nbsp;викторину по&nbsp;странам и&nbsp;столицам!</span>
+                        <p className={stylesCard.subtitle}>на&nbsp;викторину по&nbsp;странам<br />и&nbsp;столицам!</p>
                     </div>
                     <div className={`${stylesCard.answerBox} ${styles.answerBox}`}>
                         <p className={styles.text}>Выбери количество вопросов:</p>
@@ -42,13 +55,15 @@ export function Welcome({ onQuiz, value, onChange }) {
                             onBlur={() => setIsInputFocus(false)}
                             onQuiz={onQuiz}
                             isInputValid={isInputValid}
+                            isLoading={isLoading}
                         />
                     </div>
                     <div>
                         <Button 
                             text="Начать" 
-                            onQuiz={isInputValid ? onQuiz : null} 
-                            disabled={!isInputValid}
+                            onQuiz={isInputValid ? handleQuizStart : null} 
+                            disabled={!isInputValid || isLoading}
+                            isLoading={isLoading}
                         />
                     </div>
                 </div>

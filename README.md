@@ -21,6 +21,10 @@ npm i
 ```shell
 npm run dev
 ```
+or
+```shell
+vite
+```
 
 ## Run in production mode
 
@@ -46,6 +50,33 @@ Work in solo mode, in your repository and with your code
 + Number of task: 5
 + Technology: React, JS, HTML, CSS
 
+### Task 5
+
+- Implement responsive and adaptive layout of the page according to the design [mockup](https://www.figma.com/file/6tUcKq4YT9EdUFbH6rF9b4/QuizApp.-1-sprint.-5-task?type=design&node-id=0-1&mode=design&t=11qrg7hH0WD8PiVb-0) for mobile and tablet versions.
+
+- The minimum screen widths should be:
+  - 375 px for mobile,
+  - 768 px for tablet,
+  - 1280 px for desktop.
+
+- Create a separate utility (function) that takes the original result in the format like *1 question and 1 error* and transforms it into the correct pluralized form depending on the number, e.g., *12 questions and 6 errors*.
+
+Use the developed utility to format the quiz result and display it on the page.
+
+
+### Task 4
+
+- Set up answer selection using the keyboard: pressing number keys (`1`, `2`, `3`, `4`) selects an answer, and the `Backspace` key cancels the selected answer for the current question. These hotkeys work across the entire page.
+
+- After clicking the `Submit` button, add a delay of 1.5–2 seconds. During this delay, display a preloader on the button (as per the design [mockup](https://www.figma.com/file/lEAtoj3x8nqUYRLYGn5wQ7/QuizApp.-1-sprint.-4-task?type=design&node-id=0-1&mode=design&t=jO21MwYbZTEyD5Kl-0)), then highlight the result. The "Next" button should be disabled during this delay.
+
+- Use the `Enter` key to move to the next screen.
+
+- Once the answer-checking animation begins, the selected answer cannot be changed or canceled.
+
+- Each question page should include a counter that shows the current question number and the total number of questions in the quiz. When the user clicks `Next` or presses `Enter`, the current question number should increment by one.
+
+- Display a preloader on the main page while the quiz is being generated.
 
 ### Task 3
 

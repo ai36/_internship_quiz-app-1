@@ -4,4 +4,11 @@
         outline: 2px solid var(--color-button-bg);
         outline-offset: 4px;
     }
+
+    @media screen and (width < 768px) {        
+        .pic {
+            width: 146px;
+            height: 40px;
+        }
+    }
 }
